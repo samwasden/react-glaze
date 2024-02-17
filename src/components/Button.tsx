@@ -53,7 +53,7 @@ const TextButton = styled.button`
 `;
 
 export const Button: React.FunctionComponent<IButtonProps> = (props) => {
-  const { children, variant, disabled } = props;
+  const { children, variant } = props;
 
   const renderSwitch = (variant: 'outline' | 'fill' | 'text') => {
     switch (variant) {
