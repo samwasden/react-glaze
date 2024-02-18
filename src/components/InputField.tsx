@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { InputContainer } from './general/InputContainer';
 import { InputLabel } from './general/InputLabel';
 
 export interface IInputFieldProps extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
-  label: string;
+  label?: string;
+  labelClass?: string;
+  invalid: boolean;
 }
 
 const StyledInputField = styled.input`
@@ -14,31 +16,34 @@ const StyledInputField = styled.input`
 `;
 
 export const InputField: React.FunctionComponent<IInputFieldProps> = (props) => {
-  const { className, label, placeholder } = props;
+  const { className, label, labelClass, invalid, children } = props;
 
-  const [infocus, setinfocus] = useState<boolean>(false);
-  const [holder, setholder] = useState<string | undefined>(placeholder);
+  console.log(children);
+
+  const inputRef: React.RefObject<HTMLInputElement> = React.useRef<null | HTMLInputElement>(null);
+  const [hasfocus, sethasfocus] = React.useState<boolean>(false);
   const styledClass: string = `glz-input ${className ? className : ''}`;
 
-  const onFocus = (): void => {
-    setinfocus(true);
-    setholder(placeholder);
+  const onFocus = (event: React.FocusEvent<HTMLInputElement, Element>): void => {
+    sethasfocus(true);
+    if (props.onFocus) props.onFocus(event);
   };
 
-  const onBlur = (): void => {
-    setinfocus(false);
-    setholder(undefined);
+  const onBlur = (event: React.FocusEvent<HTMLInputElement, Element>): void => {
+    if (inputRef.current?.value === '') sethasfocus(false);
+    if (props.onBlur) props.onBlur(event);
   };
 
   return (
-    <InputContainer className="glz-input-container">
-      {label ? <InputLabel className={`glz-label ${infocus ? 'glz-label-focus' : 'glz-label-blur'}`}>{label}</InputLabel> : null}
-      <StyledInputField onFocus={() => onFocus()} onBlur={() => onBlur()} placeholder={holder} className={styledClass} {...props} />
+    <InputContainer className={`glz-input-container ${invalid && 'glz-input-container-invalid'}`}>
+      {label ? <InputLabel className={`glz-label ${hasfocus ? 'glz-label-focus' : 'glz-label-blur'} ${labelClass && labelClass}`}>{label}</InputLabel> : null}
+      <StyledInputField onFocus={(e) => onFocus(e)} onBlur={(e) => onBlur(e)} ref={inputRef} className={styledClass} {...props} />
     </InputContainer>
   );
 };
 
 InputField.defaultProps = {
-  label: 'Label',
-  placeholder: undefined
+  label: undefined,
+  placeholder: undefined,
+  invalid: false
 };
