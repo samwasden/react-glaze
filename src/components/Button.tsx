@@ -44,7 +44,6 @@ const TextButton = styled.button`
   &:hover:not(:disabled) {
     background-color: ${(props) => props.theme.glaze + hex.H25};
     border: solid 1px ${(props) => props.theme.glaze + hex.H25};
-    box-shadow: 10px 10px;
   }
   &:disabled {
     border: solid 1px ${(props) => props.theme.disabled + hex.H0};
@@ -53,25 +52,26 @@ const TextButton = styled.button`
 `;
 
 export const Button: React.FunctionComponent<IButtonProps> = (props) => {
-  const { children, variant } = props;
+  const { children, variant, className } = props;
+  const styledClass: string = `glz-button ${className ? className : ''}`;
 
   const renderSwitch = (variant: 'outline' | 'fill' | 'text') => {
     switch (variant) {
       case 'outline':
         return (
-          <OutlineButton className={`glz-button ${props.className}`} {...props}>
+          <OutlineButton className={styledClass} {...props}>
             {children}
           </OutlineButton>
         );
       case 'fill':
         return (
-          <FillButton className={`glz-button ${props.className}`} {...props}>
+          <FillButton className={styledClass} {...props}>
             {children}
           </FillButton>
         );
       case 'text':
         return (
-          <TextButton className={`glz-button ${props.className}`} {...props}>
+          <TextButton className={styledClass} {...props}>
             {children}
           </TextButton>
         );

@@ -8,4 +8,9 @@ const meta: Meta<typeof InputField> = {
 export default meta;
 type Story = StoryObj<typeof InputField>;
 
-export const Primary: Story = {};
+export const Primary: Story = {
+  args: {
+    label: 'Label',
+    placeholder: ''
+  }
+};
