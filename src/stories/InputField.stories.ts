@@ -11,6 +11,8 @@ type Story = StoryObj<typeof InputField>;
 export const Primary: Story = {
   args: {
     label: 'Label',
-    placeholder: 'Placeholder'
+    placeholder: 'Placeholder',
+    hint: 'This is a hint',
+    error: 'This is an error'
   }
 };

@@ -9,5 +9,10 @@ export default meta;
 type Story = StoryObj<typeof DatePicker>;
 
 export const Primary: Story = {
-  args: {}
+  args: {
+    label: 'Label',
+    placeholder: 'Placeholder',
+    hint: 'This is a hint',
+    error: 'This is an error'
+  }
 };

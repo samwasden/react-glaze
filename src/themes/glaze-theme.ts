@@ -4,6 +4,7 @@ export interface GlazeTheme {
   disabled: string;
   primary: string;
   secondary: string;
+  timing: number;
 }
 
 /** dark theme */
@@ -12,7 +13,8 @@ export const darkTheme: GlazeTheme = {
   antiglaze: '#080807',
   disabled: '#AAAAAA',
   primary: '#071808',
-  secondary: '#917717'
+  secondary: '#917717',
+  timing: 200
 };
 
 /** light theme */
@@ -21,5 +23,6 @@ export const lightTheme: GlazeTheme = {
   antiglaze: '#FFF2EA',
   disabled: '#AAAAAA',
   primary: '#071808',
-  secondary: '#917717'
+  secondary: '#917717',
+  timing: 200
 };

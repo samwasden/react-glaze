@@ -13,9 +13,8 @@ const StyledInputLabel = styled.label`
   height: 100%;
   font-size: 1em;
   padding: 1px 2px;
-  color: ${(props) => props.theme.primary};
-  transition: all 200ms;
-  opacity: 0.75;
+  color: ${(props) => props.theme.glaze};
+  transition: all ${(props) => props.theme.timing}ms ease-in;
 `;
 
 export const InputLabel: React.FunctionComponent<IInputLabelProps> = (props) => {

@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import { hex } from '../enums';
 
 export const GlobalStyle = createGlobalStyle`
   @font-face {
@@ -19,9 +20,14 @@ export const GlobalStyle = createGlobalStyle`
     cursor: pointer;
   }
 
+  .glz-button:active {
+    box-shadow: 0px 0px 4px 1px ${(props) => props.theme.glaze};
+  }
+
   .glz-input::placeholder {
     opacity: 1;
-    transition: all 200ms ease-in;
+    color: ${(props) => props.theme.glaze + hex.H50};
+    transition: all ${(props) => props.theme.timing}ms ease-in;
   }
 
   .glz-input:not(:focus)::placeholder {
@@ -31,7 +37,6 @@ export const GlobalStyle = createGlobalStyle`
   .glz-label-focus {
     top: -80%;
     font-size: .5em;
-    opacity: 1;
   }
 
   .glz-label-blur {

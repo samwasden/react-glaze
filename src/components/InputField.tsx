@@ -4,11 +4,13 @@ import { InputContainer } from './general/InputContainer';
 import { InputLabel } from './general/InputLabel';
 import { InputHint } from './general/InputHint';
 import { IInputProps } from '../props/IInputProps.interface';
+import { Prefix } from './general/Prefix';
+import { Suffix } from './general/Suffix';
 
 export interface IInputFieldProps extends IInputProps {}
 
 const StyledInputField = styled.input`
-  color: ${(props) => props.theme.primary};
+  color: ${(props) => props.theme.glaze};
   border: none;
   background: none;
   outline: none;
@@ -18,7 +20,17 @@ const StyledInputField = styled.input`
 `;
 
 export const InputField: React.FunctionComponent<IInputFieldProps> = (props) => {
-  const { className, label, labelClass, invalid, hint, error } = props;
+  const { className, label, labelClass, invalid, hint, error, children } = props;
+
+  let prefix: React.ReactElement | undefined;
+  let suffix: React.ReactElement | undefined;
+
+  if (Array.isArray(children)) {
+    children.forEach((child: React.ReactElement) => {
+      if (child.type === Prefix) prefix = child;
+      if (child.type === Suffix) suffix = child;
+    });
+  }
 
   const inputRef: React.RefObject<HTMLInputElement> = React.useRef<null | HTMLInputElement>(null);
   const [hasfocus, sethasfocus] = React.useState<boolean>(false);
@@ -35,7 +47,7 @@ export const InputField: React.FunctionComponent<IInputFieldProps> = (props) => 
   };
 
   return (
-    <InputContainer invalid={invalid}>
+    <InputContainer invalid={invalid} prefix={prefix} suffix={suffix}>
       {label ? (
         <InputLabel className={labelClass} focus={hasfocus}>
           {label}
