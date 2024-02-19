@@ -19,13 +19,6 @@ export const GlobalStyle = createGlobalStyle`
     cursor: pointer;
   }
 
-  .glz-input {
-    outline: none;
-    border-radius: 2px;
-    min-width: 140px;
-    line-height: 1em;
-  }
-
   .glz-input::placeholder {
     opacity: 1;
     transition: all 200ms ease-in;
@@ -35,25 +28,8 @@ export const GlobalStyle = createGlobalStyle`
     opacity: 0;
   }
 
-  .glz-input-container {
-    padding: 0.25em 0.25em 0.15em;
-    border: 1px solid ${(props) => props.theme.primary};
-    color: ${(props) => props.theme.primary};
-  }
-
-  .glz-label {
-    display: flex;
-    align-items: center;
-    height: 100%;
-    font-size: 1em;
-    padding: 1px 2px;
-    color: ${(props) => props.theme.primary};
-    transition: all 200ms;
-    opacity: .75;
-  }
-
   .glz-label-focus {
-    top: -70%;
+    top: -80%;
     font-size: .5em;
     opacity: 1;
   }
