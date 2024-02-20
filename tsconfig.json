@@ -15,5 +15,5 @@
     "strict": true,
     "target": "es6"
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/stories/Button.stories.ts"]
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/stories/Button.stories.tsx"]
 }

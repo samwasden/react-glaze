@@ -15,7 +15,7 @@ const OutlineButtonGroup = styled.div<IButtonGroupProps>`
   border: solid 1px ${(props) => (props.disabled ? props.theme.disabled : props.theme.glaze)};
   transition: all ${(props) => props.theme.timing}ms ease-in;
   ${OutlineButton} {
-    border: 1px solid ${(props) => props.theme.glaze + hex.H0};
+    border: 0px solid ${(props) => props.theme.glaze + hex.H0};
     border-radius: 0;
   }
   ${OutlineButton}:not(:last-child) {
@@ -31,11 +31,11 @@ const OutlineButtonGroup = styled.div<IButtonGroupProps>`
 
 const FillButtonGroup = styled.div<IButtonGroupProps>`
   color: ${(props) => props.theme.glaze};
-  background: ${(props) => props.theme.glaze + hex.H25};
+  background: none;
   border: solid 1px ${(props) => (props.disabled ? props.theme.disabled : props.theme.glaze)};
   transition: all ${(props) => props.theme.timing}ms ease-in;
   ${FillButton} {
-    border: 1px solid ${(props) => props.theme.glaze + hex.H0};
+    border: 0px solid ${(props) => props.theme.glaze + hex.H0};
     border-radius: 0;
   }
   ${FillButton}:not(:last-child) {
@@ -55,7 +55,7 @@ const TextButtonGroup = styled.div<IButtonGroupProps>`
   border: solid 1px ${(props) => (props.disabled ? props.theme.disabled + hex.H0 : props.theme.glaze + hex.H0)};
   transition: all ${(props) => props.theme.timing}ms ease-in;
   ${TextButton} {
-    border: 1px solid ${(props) => props.theme.glaze + hex.H0};
+    border: 0px solid ${(props) => props.theme.glaze + hex.H0};
     border-radius: 0;
   }
   ${TextButton}:not(:last-child) {

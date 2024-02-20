@@ -14,6 +14,7 @@ type Story = StoryObj<typeof ButtonGroup>;
 export const Primary: Story = {
   args: {
     variant: 'outline',
+    disabled: false,
     children: [<Button>Button A</Button>, <Button>Button B</Button>, <Button>Button C</Button>]
   }
 };
