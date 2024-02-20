@@ -12,7 +12,7 @@ export interface IInputContainerProps extends React.PropsWithChildren {
 
 const StyledInputContainer = styled.div`
   border: 1px solid ${(props) => props.theme.glaze};
-  border-radius: 2px;
+  border-radius: ${(props) => props.theme.radius}px;
   width: min-content;
   height: min-content;
   position: relative;

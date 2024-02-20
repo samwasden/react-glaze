@@ -14,7 +14,7 @@ const StyledDatePicker = styled.input`
   border: none;
   background: none;
   outline: none;
-  border-radius: 2px;
+  border-radius: ${(props) => props.theme.radius}px;
   min-width: 140px;
   line-height: 1em;
   opacity: 1;
